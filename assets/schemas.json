@@ -1,96 +1,4 @@
 {
-    "CreateFingerprintResponse": {
-        "type": "object",
-        "properties": {
-            "fingerprint": {
-                "type": "string"
-            }
-        },
-        "additionalProperties": false,
-        "required": [
-            "fingerprint"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "ApplicationCommandCreateSchema": {
-        "type": "object",
-        "properties": {
-            "type": {
-                "enum": [
-                    1,
-                    2,
-                    3,
-                    4
-                ],
-                "type": "number"
-            },
-            "name": {
-                "type": "string"
-            },
-            "name_localizations": {
-                "type": "object",
-                "additionalProperties": {
-                    "type": "string"
-                }
-            },
-            "description": {
-                "type": "string"
-            },
-            "description_localizations": {
-                "type": "object",
-                "additionalProperties": {
-                    "type": "string"
-                }
-            },
-            "options": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/ApplicationCommandOption"
-                }
-            },
-            "default_member_permissions": {
-                "type": "string"
-            },
-            "dm_permission": {
-                "type": "boolean"
-            },
-            "nsfw": {
-                "type": "boolean"
-            },
-            "integration_types": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/ApplicationIntegrationType"
-                }
-            },
-            "contexts": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/definitions/InteractionContextType"
-                }
-            },
-            "handler": {
-                "enum": [
-                    1,
-                    2,
-                    3
-                ],
-                "type": "number"
-            }
-        },
-        "additionalProperties": false,
-        "required": [
-            "name"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "BulkApplicationCommandCreateSchema": {
-        "type": "array",
-        "items": {
-            "$ref": "#/definitions/ApplicationCommandCreateSchema"
-        },
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
     "ApplicationCommandSchema": {
         "type": "object",
         "properties": {
@@ -374,7 +282,7 @@
             "length": {
                 "type": "integer"
             },
-            "__@unscopables@751": {
+            "__@unscopables@4232": {
                 "type": "object",
                 "additionalProperties": false,
                 "patternProperties": {
@@ -500,17 +408,17 @@
                     "with": {
                         "type": "boolean"
                     },
-                    "__@iterator@749": {
+                    "__@iterator@956": {
                         "type": "boolean"
                     },
-                    "__@unscopables@751": {
+                    "__@unscopables@4232": {
                         "type": "boolean"
                     }
                 }
             }
         },
         "required": [
-            "__@unscopables@751",
+            "__@unscopables@4232",
             "length"
         ],
         "$schema": "http://json-schema.org/draft-07/schema#"
@@ -4119,10 +4027,6 @@
             "id": {
                 "type": "string"
             },
-            "insert": {
-                "type": "object",
-                "additionalProperties": false
-            },
             "roles": {
                 "type": "array",
                 "items": {
@@ -4131,6 +4035,10 @@
             },
             "banner": {
                 "type": "string"
+            },
+            "insert": {
+                "type": "object",
+                "additionalProperties": false
             },
             "channels": {
                 "type": "array",
@@ -4468,9 +4376,6 @@
             "newToken": {
                 "type": "string"
             },
-            "email": {
-                "type": "string"
-            },
             "id": {
                 "description": "A Twitter-like snowflake, except the epoch is 2015-01-01T00:00:00.000Z\n```\nIf we have a snowflake '266241948824764416' we can represent it as binary:\n\n64                                          22     17     12          0\n 000000111011000111100001101001000101000000  00001  00000  000000000000\n      number of ms since Discord epoch       worker  pid    increment\n```",
                 "type": "string"
@@ -4538,6 +4443,9 @@
             },
             "mfa_enabled": {
                 "type": "boolean"
+            },
+            "email": {
+                "type": "string"
             },
             "phone": {
                 "type": "string"
@@ -5842,6 +5750,9 @@
     "MessageEditSchema": {
         "type": "object",
         "properties": {
+            "flags": {
+                "type": "integer"
+            },
             "embed": {
                 "anyOf": [
                     {
@@ -5873,9 +5784,6 @@
                         "type": "null"
                     }
                 ]
-            },
-            "flags": {
-                "type": "integer"
             },
             "content": {
                 "type": "string"
@@ -6569,9 +6477,6 @@
                     "$ref": "#/definitions/ChannelOverride"
                 }
             },
-            "version": {
-                "type": "integer"
-            },
             "guild_id": {
                 "type": [
                     "null",
@@ -6579,6 +6484,9 @@
                 ]
             },
             "flags": {
+                "type": "integer"
+            },
+            "version": {
                 "type": "integer"
             },
             "message_notifications": {
@@ -7253,6 +7161,12 @@
             "name": {
                 "type": "string"
             },
+            "id": {
+                "type": "string"
+            },
+            "flags": {
+                "type": "integer"
+            },
             "type": {
                 "enum": [
                     0,
@@ -7277,12 +7191,6 @@
                     9
                 ],
                 "type": "number"
-            },
-            "id": {
-                "type": "string"
-            },
-            "flags": {
-                "type": "integer"
             },
             "icon": {
                 "type": [
@@ -9782,6 +9690,85 @@
         "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
     },
+    "ApplicationCommandCreateSchema": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "enum": [
+                    1,
+                    2,
+                    3,
+                    4
+                ],
+                "type": "number"
+            },
+            "name": {
+                "type": "string"
+            },
+            "name_localizations": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                }
+            },
+            "description": {
+                "type": "string"
+            },
+            "description_localizations": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                }
+            },
+            "options": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ApplicationCommandOption"
+                }
+            },
+            "default_member_permissions": {
+                "type": "string"
+            },
+            "dm_permission": {
+                "type": "boolean"
+            },
+            "nsfw": {
+                "type": "boolean"
+            },
+            "integration_types": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/ApplicationIntegrationType"
+                }
+            },
+            "contexts": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/InteractionContextType"
+                }
+            },
+            "handler": {
+                "enum": [
+                    1,
+                    2,
+                    3
+                ],
+                "type": "number"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "name"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "BulkApplicationCommandCreateSchema": {
+        "type": "array",
+        "items": {
+            "$ref": "#/definitions/ApplicationCommandCreateSchema"
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
     "OAuth2UserInfoResponse": {
         "type": "object",
         "properties": {
@@ -9822,6 +9809,19 @@
             "picture",
             "preferred_username",
             "sub"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "CreateFingerprintResponse": {
+        "type": "object",
+        "properties": {
+            "fingerprint": {
+                "type": "string"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "fingerprint"
         ],
         "$schema": "http://json-schema.org/draft-07/schema#"
     },
@@ -9960,6 +9960,22 @@
         ],
         "$schema": "http://json-schema.org/draft-07/schema#"
     },
+    "ApplicationCommandIndexPermissions": {
+        "type": "object",
+        "properties": {
+            "user": {
+                "type": "boolean"
+            },
+            "roles": {
+                "$ref": "#/definitions/Record%3Cstring%2Cboolean%3E"
+            },
+            "channels": {
+                "$ref": "#/definitions/Record%3Cstring%2Cboolean%3E"
+            }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
     "ApplicationIntegrationType": {
         "type": "number",
         "enum": [
@@ -9975,22 +9991,6 @@
             1,
             2
         ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "ApplicationCommandIndexPermissions": {
-        "type": "object",
-        "properties": {
-            "user": {
-                "type": "boolean"
-            },
-            "roles": {
-                "$ref": "#/definitions/Record%3Cstring%2Cboolean%3E"
-            },
-            "channels": {
-                "$ref": "#/definitions/Record%3Cstring%2Cboolean%3E"
-            }
-        },
-        "additionalProperties": false,
         "$schema": "http://json-schema.org/draft-07/schema#"
     },
     "InteractionType": {
@@ -10125,7 +10125,7 @@
                     "length": {
                         "type": "integer"
                     },
-                    "__@unscopables@751": {
+                    "__@unscopables@4232": {
                         "type": "object",
                         "additionalProperties": false,
                         "patternProperties": {
@@ -10251,17 +10251,17 @@
                             "with": {
                                 "type": "boolean"
                             },
-                            "__@iterator@749": {
+                            "__@iterator@956": {
                                 "type": "boolean"
                             },
-                            "__@unscopables@751": {
+                            "__@unscopables@4232": {
                                 "type": "boolean"
                             }
                         }
                     }
                 },
                 "required": [
-                    "__@unscopables@751",
+                    "__@unscopables@4232",
                     "length"
                 ]
             },
@@ -18583,18 +18583,10 @@
                 "type": "boolean",
                 "default": false
             },
-            "ip": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "global": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "error": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "routes": {
-                "$ref": "#/definitions/RouteRateLimit"
-            }
+            "ip": {},
+            "global": {},
+            "error": {},
+            "routes": {}
         },
         "additionalProperties": false,
         "required": [
@@ -18603,71 +18595,6 @@
             "global",
             "ip",
             "routes"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "RateLimitOptions": {
-        "type": "object",
-        "properties": {
-            "bot": {
-                "type": "integer"
-            },
-            "count": {
-                "type": "integer"
-            },
-            "window": {
-                "type": "integer"
-            },
-            "onyIp": {
-                "type": "boolean"
-            }
-        },
-        "additionalProperties": false,
-        "required": [
-            "count",
-            "window"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "RouteRateLimit": {
-        "type": "object",
-        "properties": {
-            "guild": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "webhook": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "channel": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "auth": {
-                "$ref": "#/definitions/AuthRateLimit"
-            }
-        },
-        "additionalProperties": false,
-        "required": [
-            "auth",
-            "channel",
-            "guild",
-            "webhook"
-        ],
-        "$schema": "http://json-schema.org/draft-07/schema#"
-    },
-    "AuthRateLimit": {
-        "type": "object",
-        "properties": {
-            "login": {
-                "$ref": "#/definitions/RateLimitOptions"
-            },
-            "register": {
-                "$ref": "#/definitions/RateLimitOptions"
-            }
-        },
-        "additionalProperties": false,
-        "required": [
-            "login",
-            "register"
         ],
         "$schema": "http://json-schema.org/draft-07/schema#"
     },

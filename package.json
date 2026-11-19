@@ -72,7 +72,7 @@
         "prettier": "^3.9.6",
         "pretty-quick": "^4.2.2",
         "ts-node": "^10.9.2",
-        "typescript": "^6.0.3",
+        "typescript": "^5.9.3",
         "typescript-json-schema": "^0.68.0"
     },
     "dependencies": {
