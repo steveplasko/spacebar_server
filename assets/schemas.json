@@ -18588,10 +18588,18 @@
                 "type": "boolean",
                 "default": false
             },
-            "ip": {},
-            "global": {},
-            "error": {},
-            "routes": {}
+            "ip": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "global": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "error": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "routes": {
+                "$ref": "#/definitions/RouteRateLimit"
+            }
         },
         "additionalProperties": false,
         "required": [
@@ -18600,6 +18608,71 @@
             "global",
             "ip",
             "routes"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "RateLimitOptions": {
+        "type": "object",
+        "properties": {
+            "bot": {
+                "type": "integer"
+            },
+            "count": {
+                "type": "integer"
+            },
+            "window": {
+                "type": "integer"
+            },
+            "onyIp": {
+                "type": "boolean"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "count",
+            "window"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "RouteRateLimit": {
+        "type": "object",
+        "properties": {
+            "guild": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "webhook": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "channel": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "auth": {
+                "$ref": "#/definitions/AuthRateLimit"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "auth",
+            "channel",
+            "guild",
+            "webhook"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "AuthRateLimit": {
+        "type": "object",
+        "properties": {
+            "login": {
+                "$ref": "#/definitions/RateLimitOptions"
+            },
+            "register": {
+                "$ref": "#/definitions/RateLimitOptions"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "login",
+            "register"
         ],
         "$schema": "http://json-schema.org/draft-07/schema#"
     },

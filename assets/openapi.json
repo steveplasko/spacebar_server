@@ -30,93 +30,6 @@
             }
         },
         "schemas": {
-            "CreateFingerprintResponse": {
-                "type": "object",
-                "properties": {
-                    "fingerprint": {
-                        "type": "string"
-                    }
-                },
-                "required": [
-                    "fingerprint"
-                ]
-            },
-            "ApplicationCommandCreateSchema": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "enum": [
-                            1,
-                            2,
-                            3,
-                            4
-                        ],
-                        "type": "number"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "name_localizations": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
-                    "description": {
-                        "type": "string"
-                    },
-                    "description_localizations": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        }
-                    },
-                    "options": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ApplicationCommandOption"
-                        }
-                    },
-                    "default_member_permissions": {
-                        "type": "string"
-                    },
-                    "dm_permission": {
-                        "type": "boolean"
-                    },
-                    "nsfw": {
-                        "type": "boolean"
-                    },
-                    "integration_types": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/ApplicationIntegrationType"
-                        }
-                    },
-                    "contexts": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/InteractionContextType"
-                        }
-                    },
-                    "handler": {
-                        "enum": [
-                            1,
-                            2,
-                            3
-                        ],
-                        "type": "number"
-                    }
-                },
-                "required": [
-                    "name"
-                ]
-            },
-            "BulkApplicationCommandCreateSchema": {
-                "type": "array",
-                "items": {
-                    "$ref": "#/components/schemas/ApplicationCommandCreateSchema"
-                }
-            },
             "ApplicationCommandSchema": {
                 "type": "object",
                 "properties": {
@@ -384,7 +297,7 @@
                     "length": {
                         "type": "integer"
                     },
-                    "__@unscopables@751": {
+                    "__@unscopables@4232": {
                         "type": "object",
                         "additionalProperties": false,
                         "patternProperties": {
@@ -510,17 +423,17 @@
                             "with": {
                                 "type": "boolean"
                             },
-                            "__@iterator@749": {
+                            "__@iterator@956": {
                                 "type": "boolean"
                             },
-                            "__@unscopables@751": {
+                            "__@unscopables@4232": {
                                 "type": "boolean"
                             }
                         }
                     }
                 },
                 "required": [
-                    "__@unscopables@751",
+                    "__@unscopables@4232",
                     "length"
                 ]
             },
@@ -3787,10 +3700,6 @@
                     "id": {
                         "type": "string"
                     },
-                    "insert": {
-                        "type": "object",
-                        "additionalProperties": false
-                    },
                     "roles": {
                         "type": "array",
                         "items": {
@@ -3799,6 +3708,10 @@
                     },
                     "banner": {
                         "type": "string"
+                    },
+                    "insert": {
+                        "type": "object",
+                        "additionalProperties": false
                     },
                     "channels": {
                         "type": "array",
@@ -4050,9 +3963,6 @@
                     "newToken": {
                         "type": "string"
                     },
-                    "email": {
-                        "type": "string"
-                    },
                     "id": {
                         "description": "A Twitter-like snowflake, except the epoch is 2015-01-01T00:00:00.000Z\n```\nIf we have a snowflake '266241948824764416' we can represent it as binary:\n\n64                                          22     17     12          0\n 000000111011000111100001101001000101000000  00001  00000  000000000000\n      number of ms since Discord epoch       worker  pid    increment\n```",
                         "type": "string"
@@ -4120,6 +4030,9 @@
                     },
                     "mfa_enabled": {
                         "type": "boolean"
+                    },
+                    "email": {
+                        "type": "string"
                     },
                     "phone": {
                         "type": "string"
@@ -5213,6 +5126,9 @@
             "MessageEditSchema": {
                 "type": "object",
                 "properties": {
+                    "flags": {
+                        "type": "integer"
+                    },
                     "embed": {
                         "anyOf": [
                             {
@@ -5244,9 +5160,6 @@
                                 "type": "null"
                             }
                         ]
-                    },
-                    "flags": {
-                        "type": "integer"
                     },
                     "content": {
                         "type": "string"
@@ -5891,14 +5804,14 @@
                             "$ref": "#/components/schemas/ChannelOverride"
                         }
                     },
-                    "version": {
-                        "type": "integer"
-                    },
                     "guild_id": {
                         "type": "string",
                         "nullable": true
                     },
                     "flags": {
+                        "type": "integer"
+                    },
+                    "version": {
                         "type": "integer"
                     },
                     "message_notifications": {
@@ -6516,6 +6429,12 @@
                     "name": {
                         "type": "string"
                     },
+                    "id": {
+                        "type": "string"
+                    },
+                    "flags": {
+                        "type": "integer"
+                    },
                     "type": {
                         "enum": [
                             0,
@@ -6540,12 +6459,6 @@
                             9
                         ],
                         "type": "number"
-                    },
-                    "id": {
-                        "type": "string"
-                    },
-                    "flags": {
-                        "type": "integer"
                     },
                     "icon": {
                         "type": "string",
@@ -8551,6 +8464,82 @@
                     }
                 }
             },
+            "ApplicationCommandCreateSchema": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "enum": [
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "name_localizations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "description_localizations": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApplicationCommandOption"
+                        }
+                    },
+                    "default_member_permissions": {
+                        "type": "string"
+                    },
+                    "dm_permission": {
+                        "type": "boolean"
+                    },
+                    "nsfw": {
+                        "type": "boolean"
+                    },
+                    "integration_types": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ApplicationIntegrationType"
+                        }
+                    },
+                    "contexts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/InteractionContextType"
+                        }
+                    },
+                    "handler": {
+                        "enum": [
+                            1,
+                            2,
+                            3
+                        ],
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "name"
+                ]
+            },
+            "BulkApplicationCommandCreateSchema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/ApplicationCommandCreateSchema"
+                }
+            },
             "OAuth2UserInfoResponse": {
                 "type": "object",
                 "properties": {
@@ -8586,6 +8575,17 @@
                     "picture",
                     "preferred_username",
                     "sub"
+                ]
+            },
+            "CreateFingerprintResponse": {
+                "type": "object",
+                "properties": {
+                    "fingerprint": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fingerprint"
                 ]
             },
             "ApplicationCommandOption": {
@@ -8717,6 +8717,20 @@
                     "value"
                 ]
             },
+            "ApplicationCommandIndexPermissions": {
+                "type": "object",
+                "properties": {
+                    "user": {
+                        "type": "boolean"
+                    },
+                    "roles": {
+                        "$ref": "#/components/schemas/Record%3Cstring%2Cboolean%3E"
+                    },
+                    "channels": {
+                        "$ref": "#/components/schemas/Record%3Cstring%2Cboolean%3E"
+                    }
+                }
+            },
             "ApplicationIntegrationType": {
                 "type": "number",
                 "enum": [
@@ -8731,20 +8745,6 @@
                     1,
                     2
                 ]
-            },
-            "ApplicationCommandIndexPermissions": {
-                "type": "object",
-                "properties": {
-                    "user": {
-                        "type": "boolean"
-                    },
-                    "roles": {
-                        "$ref": "#/components/schemas/Record%3Cstring%2Cboolean%3E"
-                    },
-                    "channels": {
-                        "$ref": "#/components/schemas/Record%3Cstring%2Cboolean%3E"
-                    }
-                }
             },
             "InteractionType": {
                 "type": "number",
@@ -8871,7 +8871,7 @@
                             "length": {
                                 "type": "integer"
                             },
-                            "__@unscopables@751": {
+                            "__@unscopables@4232": {
                                 "type": "object",
                                 "additionalProperties": false,
                                 "patternProperties": {
@@ -8997,17 +8997,17 @@
                                     "with": {
                                         "type": "boolean"
                                     },
-                                    "__@iterator@749": {
+                                    "__@iterator@956": {
                                         "type": "boolean"
                                     },
-                                    "__@unscopables@751": {
+                                    "__@unscopables@4232": {
                                         "type": "boolean"
                                     }
                                 }
                             }
                         },
                         "required": [
-                            "__@unscopables@751",
+                            "__@unscopables@4232",
                             "length"
                         ]
                     },
@@ -32855,132 +32855,6 @@
                 ]
             }
         },
-        "/widget/": {
-            "get": {
-                "security": [
-                    {}
-                ],
-                "responses": {
-                    "default": {
-                        "description": "No description available"
-                    }
-                },
-                "tags": [
-                    "widget"
-                ],
-                "x-badges": [
-                    {
-                        "label": "Spacebar-only",
-                        "color": "red"
-                    }
-                ]
-            }
-        },
-        "/verify-email/": {
-            "get": {
-                "security": [
-                    {}
-                ],
-                "responses": {
-                    "default": {
-                        "description": "No description available"
-                    }
-                },
-                "tags": [
-                    "verify-email"
-                ],
-                "x-badges": [
-                    {
-                        "label": "Spacebar-only",
-                        "color": "red"
-                    }
-                ]
-            }
-        },
-        "/static/logo.png/": {
-            "get": {
-                "security": [
-                    {}
-                ],
-                "responses": {
-                    "default": {
-                        "description": "No description available"
-                    }
-                },
-                "tags": [
-                    "static"
-                ],
-                "x-badges": [
-                    {
-                        "label": "Spacebar-only",
-                        "color": "red"
-                    }
-                ]
-            }
-        },
-        "/readyz/": {
-            "get": {
-                "security": [
-                    {}
-                ],
-                "responses": {
-                    "default": {
-                        "description": "No description available"
-                    }
-                },
-                "tags": [
-                    "readyz"
-                ],
-                "x-badges": [
-                    {
-                        "label": "Spacebar-only",
-                        "color": "red"
-                    }
-                ]
-            }
-        },
-        "/": {
-            "get": {
-                "security": [
-                    {}
-                ],
-                "responses": {
-                    "default": {
-                        "description": "No description available"
-                    }
-                },
-                "tags": [
-                    ""
-                ],
-                "x-badges": [
-                    {
-                        "label": "Spacebar-only",
-                        "color": "red"
-                    }
-                ]
-            }
-        },
-        "/healthz/": {
-            "get": {
-                "security": [
-                    {}
-                ],
-                "responses": {
-                    "default": {
-                        "description": "No description available"
-                    }
-                },
-                "tags": [
-                    "healthz"
-                ],
-                "x-badges": [
-                    {
-                        "label": "Spacebar-only",
-                        "color": "red"
-                    }
-                ]
-            }
-        },
         "/_spacebar/api/version/": {
             "get": {
                 "security": [
@@ -33232,6 +33106,132 @@
                 },
                 "tags": [
                     "_spacebar"
+                ],
+                "x-badges": [
+                    {
+                        "label": "Spacebar-only",
+                        "color": "red"
+                    }
+                ]
+            }
+        },
+        "/widget/": {
+            "get": {
+                "security": [
+                    {}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "No description available"
+                    }
+                },
+                "tags": [
+                    "widget"
+                ],
+                "x-badges": [
+                    {
+                        "label": "Spacebar-only",
+                        "color": "red"
+                    }
+                ]
+            }
+        },
+        "/verify-email/": {
+            "get": {
+                "security": [
+                    {}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "No description available"
+                    }
+                },
+                "tags": [
+                    "verify-email"
+                ],
+                "x-badges": [
+                    {
+                        "label": "Spacebar-only",
+                        "color": "red"
+                    }
+                ]
+            }
+        },
+        "/static/logo.png/": {
+            "get": {
+                "security": [
+                    {}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "No description available"
+                    }
+                },
+                "tags": [
+                    "static"
+                ],
+                "x-badges": [
+                    {
+                        "label": "Spacebar-only",
+                        "color": "red"
+                    }
+                ]
+            }
+        },
+        "/readyz/": {
+            "get": {
+                "security": [
+                    {}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "No description available"
+                    }
+                },
+                "tags": [
+                    "readyz"
+                ],
+                "x-badges": [
+                    {
+                        "label": "Spacebar-only",
+                        "color": "red"
+                    }
+                ]
+            }
+        },
+        "/": {
+            "get": {
+                "security": [
+                    {}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "No description available"
+                    }
+                },
+                "tags": [
+                    ""
+                ],
+                "x-badges": [
+                    {
+                        "label": "Spacebar-only",
+                        "color": "red"
+                    }
+                ]
+            }
+        },
+        "/healthz/": {
+            "get": {
+                "security": [
+                    {}
+                ],
+                "responses": {
+                    "default": {
+                        "description": "No description available"
+                    }
+                },
+                "tags": [
+                    "healthz"
                 ],
                 "x-badges": [
                     {
